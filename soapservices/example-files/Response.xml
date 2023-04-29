@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetCourseDetailsResponse xmlns="http://in29minutes.com/courses"
+xsi:schemaLocation="http://in29minutes.com/courses course-details.xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CourseDetails>
+	<id>123</id>
+	<name>Spring in29minutes</name>
+	<description>help to learn basic of  sprngFramework</description>
+	</CourseDetails>
+</GetCourseDetailsResponse>

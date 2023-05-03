@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.traning.spring.soapservices.soap.bean.Course;
-import com.traning.spring.soapservices.soap.service.CourseDetailsService.Status;
 
 @Service
 public class CourseDetailsService {

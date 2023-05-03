@@ -12,12 +12,13 @@ public class UserDaoService {
 	
 	private static List<User> users  = new ArrayList<>();
 	
+	private static int userCount =0;
 	static {
-		users.add(new User(1,"Adam",LocalDate.now().minusYears(30)));
-		users.add(new User(2,"Eve",LocalDate.now().minusYears(40)));
-		users.add(new User(3,"Jim",LocalDate.now().minusYears(24)));
-		users.add(new User(4,"John",LocalDate.now().minusYears(15)));
-		users.add(new User(5,"Ranga",LocalDate.now().minusYears(37)));	
+		users.add(new User(++userCount,"Adam",LocalDate.now().minusYears(30)));
+		users.add(new User(++userCount,"Eve",LocalDate.now().minusYears(40)));
+		users.add(new User(++userCount,"Jim",LocalDate.now().minusYears(24)));
+		users.add(new User(++userCount,"John",LocalDate.now().minusYears(15)));
+		users.add(new User(++userCount,"Ranga",LocalDate.now().minusYears(37)));	
 	}
 	
 	public List<User> findAll() {
@@ -25,7 +26,17 @@ public class UserDaoService {
 	}
 	
 	public User findOne(int id) {
-		return users.stream().filter(u->u.getId()==id).findFirst().get();
+		User user = users.stream().filter(u->u.getId()==id).findFirst().orElse(null);
+		if(user==null) {
+			throw new UserNotFoundException("id "+id);
+		}
+		return user;
+	}
+
+	public User save(User user) {
+		user.setId(++userCount);
+		users.add(user);
+		return user;
 	}
 	
 }

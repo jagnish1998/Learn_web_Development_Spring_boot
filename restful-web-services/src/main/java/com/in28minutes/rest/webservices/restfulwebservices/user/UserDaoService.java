@@ -3,7 +3,7 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
@@ -31,6 +31,14 @@ public class UserDaoService {
 			throw new UserNotFoundException("id "+id);
 		}
 		return user;
+	}
+	
+	public void DeleteById(int id) {
+		User user = users.stream().filter(u->u.getId()==id).findFirst().orElse(null);
+		if(user==null) {
+			throw new UserNotFoundException("id "+id);
+		}
+		users.remove(user);
 	}
 
 	public User save(User user) {
